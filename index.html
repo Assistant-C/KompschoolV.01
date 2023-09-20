@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div style="position: absolute; visibility: hidden; width: 0; height: 0">
+      <svg>
+        <symbol id="starlet" width="10" height="10" viewBox="0 0 10 10">
+          <path
+            d="M9.89374 4.20643L7.70245 6.40326L8.21993 9.50602C8.24244 9.64169 8.18827 9.77881 8.07992 9.85985C8.0187 9.9058 7.94588 9.92896 7.87306 9.92896C7.81713 9.92896 7.76084 9.91521 7.70948 9.88735L5 8.42244L2.29087 9.88699C2.17267 9.95139 2.02879 9.94089 1.92044 9.85949C1.81208 9.77845 1.75791 9.64133 1.78042 9.50565L2.29791 6.40289L0.106257 4.20643C0.0105704 4.1102 -0.0242568 3.9662 0.0172544 3.83559C0.0587655 3.70498 0.168876 3.60911 0.3015 3.58921L3.33006 3.13697L4.68444 0.314236C4.803 0.0671296 5.197 0.0671296 5.31556 0.314236L6.66994 3.13697L9.6985 3.58921C9.83112 3.60911 9.94123 3.70462 9.98275 3.83559C10.0243 3.96656 9.98943 4.10983 9.89374 4.20643Z"
+          />
+        </symbol>
+        <symbol id="arrow-right" width="20" height="12" viewBox="0 0 20 12">
+          <path
+            d="M14.1248 1.18774C14.0603 1.25165 14.0092 1.32769 13.9743 1.41146C13.9394 1.49524 13.9214 1.5851 13.9214 1.67586C13.9214 1.76662 13.9394 1.85648 13.9743 1.94026C14.0092 2.02404 14.0603 2.10007 14.1248 2.16399L17.2873 5.32649H1.10352C0.921179 5.32649 0.746311 5.39892 0.61738 5.52785C0.488448 5.65678 0.416016 5.83165 0.416016 6.01399C0.416016 6.19632 0.488448 6.37119 0.61738 6.50012C0.746311 6.62905 0.921179 6.70149 1.10352 6.70149H17.2735L14.1248 9.84336C13.9967 9.97217 13.9248 10.1464 13.9248 10.328C13.9248 10.5097 13.9967 10.6839 14.1248 10.8127C14.2536 10.9408 14.4278 11.0127 14.6095 11.0127C14.7911 11.0127 14.9653 10.9408 15.0941 10.8127L19.4666 6.44024C19.5255 6.38377 19.5723 6.31599 19.6043 6.24097C19.6363 6.16595 19.6528 6.08523 19.6528 6.00367C19.6528 5.92212 19.6363 5.8414 19.6043 5.76638C19.5723 5.69136 19.5255 5.62358 19.4666 5.56711L15.101 1.18774C15.0371 1.1233 14.9611 1.07215 14.8773 1.03725C14.7935 1.00235 14.7036 0.984375 14.6129 0.984375C14.5221 0.984375 14.4323 1.00235 14.3485 1.03725C14.2647 1.07215 14.1887 1.1233 14.1248 1.18774Z"
+            fill="black"
+          />
+        </symbol>
+        <symbol id="arrow-right-gradient" width="23" height="13" viewBox="0 0 23 13">
+          <path
+            d="M16.1875 1.03187C16.1143 1.1045 16.0562 1.19091 16.0165 1.28611C15.9768 1.38131 15.9564 1.48343 15.9564 1.58656C15.9564 1.6897 15.9768 1.79181 16.0165 1.88701C16.0562 1.98221 16.1143 2.06862 16.1875 2.14125L19.7812 5.735H1.39062C1.18342 5.735 0.984711 5.81731 0.838198 5.96382C0.691685 6.11033 0.609375 6.30905 0.609375 6.51625C0.609375 6.72345 0.691685 6.92216 0.838198 7.06868C0.984711 7.21519 1.18342 7.2975 1.39062 7.2975H19.7656L16.1875 10.8678C16.042 11.0142 15.9603 11.2122 15.9603 11.4186C15.9603 11.625 16.042 11.823 16.1875 11.9694C16.3339 12.1149 16.5319 12.1966 16.7383 12.1966C16.9447 12.1966 17.1427 12.1149 17.2891 11.9694L22.2578 7.00062C22.3247 6.93646 22.3779 6.85944 22.4143 6.77418C22.4506 6.68893 22.4693 6.59721 22.4693 6.50453C22.4693 6.41185 22.4506 6.32013 22.4143 6.23488C22.3779 6.14962 22.3247 6.0726 22.2578 6.00844L17.2969 1.03187C17.2242 0.958648 17.1378 0.900528 17.0426 0.860865C16.9474 0.821202 16.8453 0.800781 16.7422 0.800781C16.6391 0.800781 16.5369 0.821202 16.4417 0.860865C16.3465 0.900528 16.2601 0.958648 16.1875 1.03187Z"
+            fill="url(#paint0_linear_581_2347)"
+          />
+          <defs>
+            <linearGradient id="paint0_linear_581_2347" x1="-10.4022" y1="6.49867" x2="22.4693" y2="6.49867" gradientUnits="userSpaceOnUse">
+              <stop offset="0.0447915" stop-color="#7FFFBC" />
+              <stop offset="0.940625" stop-color="#62D9FF" />
+            </linearGradient>
+          </defs>
+        </symbol>
+        <symbol id="triangle-bottom" width="7" height="3" viewBox="0 0 7 3">
+          <path d="M3.5 3L0.468911 0L6.53109 0L3.5 3Z" fill="black" />
+        </symbol>
+        <symbol id="phone-gradient" width="15" height="15" viewBox="0 0 15 15">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M7.20734 7.79524C9.70052 10.2877 10.2661 7.4042 11.8535 8.99051C13.3839 10.5205 14.2635 10.827 12.3245 12.7655C12.0816 12.9606 10.5385 15.3089 5.11538 9.88729C-0.308424 4.465 2.03849 2.92028 2.23373 2.67747C4.17742 0.733654 4.47866 1.61836 6.00906 3.14833C7.59648 4.73531 4.71416 5.30276 7.20734 7.79524Z"
+            fill="url(#paint0_linear_581_2304)"
+          />
+          <defs>
+            <linearGradient id="paint0_linear_581_2304" x1="-4.41931" y1="7.5" x2="13.4375" y2="7.5" gradientUnits="userSpaceOnUse">
+              <stop offset="0.0447915" stop-color="#7FFFBC" />
+              <stop offset="0.940625" stop-color="#62D9FF" />
+            </linearGradient>
+          </defs>
+        </symbol>
+        <symbol id="star" width="30" height="30" viewBox="0 0 30 30">
+          <path
+            d="M15 30L10.6066 25.6066H4.39336V19.3934L0 15L4.39336 10.6066V4.39336H10.6066L15 0L19.3934 4.39336H25.6066V10.6066L30 15L25.6066 19.3934V25.6066H19.3934L15 30Z"
+            fill="#EDC472"
+          />
+        </symbol>
+      </svg>
+    </div> 
+    <nav class="nav">
+      <img src="./img/logo.png" alt="" class="nav-logo" />
+      <div class="wrapper">
+        <img src="./img/znak.png" alt="" class="nav-wrapper-logo" />
+        <ul class="nav-list list">
+          <li class="list-item"><a href="#about" class="list-link active">Головна</a></li>
+          <li class="list-item"><a href="#advantages" class="list-link">Наші переваги</a></li>
+          <li class="list-item"><a href="#curriculum" class="list-link">Навчальна програма</a></li>
+          <li class="list-item"><a href="#team" class="list-link">Наш колектив</a></li>
+          <li class="list-item"><a href="#gallery" class="list-link">Галерея</a></li>
+          <li class="list-item"><a href="#reviews" class="list-link">Відгуки</a></li>
+          <li class="list-item"><a href="#contact" class="list-link">Контакти</a></li>
+          <li class="list-item">
+            <a href="./20-years.html" class="list-link custom">
+              Нам
+              <span class="star">
+                <svg class="star-icon">
+                  <use xlink:href="#star"></use>
+                </svg>
+                 21 
+              </span>
+              рік
+            </a>
+          </li>
+          <!-- <li class="list-item"><a href="#footer" class="list-link">+38 066 22 19 699</a></li>
+          <li class="list-item">
+            <div class="language">
+              <div class="language-select">
+                <img src="./img/flag.png" alt="" class="language-flag" />
+                <p class="language-country_short">UA</p>
+                <svg class="language-country_icon">
+                  <use xlink:href="#triangle-bottom"></use>
+                </svg>
+              </div>
+              <div class="language-options">
+                <div class="language-option">
+                  <img src="./img/flag.png" alt="" class="language-flag" />
+                  <p class="language-country_short">UA</p>
+                </div>
+                <div class="language-option">
+                  <img src="./img/flag.png" alt="" class="language-flag" />
+                  <p class="language-country_short">UA</p>
+                </div>
+              </div>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+    <section class="scrollspy about" id="about">
+      <div class="wrapper">
+        <a data-fslightbox href="./img/header.png">
+          <img src="./img/student-1.png" alt="Student" class="about-photo" />
+        </a>
+        <div class="about-info">
+          <h2 class="about-title">Школа комп'ютерної майстерності</h2>
+          <p>Школа комп'ютерної майстерності - це позашкільний навчальний заклад з 21-річним досвідом педагогічної діяльності.</p>
+          <p>Поле наших знань лежить в сфері сайтобудування, а саме <b>FRONT-END</b> розробки, яка на даний момент розвивається найшвидше.</p>
+          <p>Це гарантовано дає можливість нашим учням отримати престижну та високооплачувану професію.</p>
+          <br />
+          <p>
+            Успіх в навчанні залежить не тільки від викладачів, а й від учнів, від їх здібностей, бажання, сумлінності та базових знань. Тому, перш ніж записатись в нашу школу,
+            учні запрошуються на <b>БЕЗКОШТОВНИЙ пробний урок</b>, для того, щоб побачити та відчути на собі роботу нашого колективу.
+          </p>
+          <div class="about-buttons">
+            <button class="button filled active">Пробний урок <i class="fa-sharp fa-solid fa-arrow-right-long"></i></button>
+            <!-- <button class="button unfilled">Замовити дзвінок</button> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="scrollspy advantages" id="advantages">
+      <h1 class="title">Наші переваги</h1>
+      <div class="wrapper">
+        <div class="accordeon">
+          <button class="accordeon__item" tabindex="1">
+            <span class="accordeon__icon"><i class="fa fa-book"></i></span>
+            <span class="accordeon__text">Унікальна програма</span>
+            <span class="accordeon__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+          </button>
+          <button class="accordeon__item" tabindex="2">
+            <span class="accordeon__icon"><i class="fa fa-child"></i></span>
+            <span class="accordeon__text">Індивідуальний підхід</span>
+            <span class="accordeon__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+          </button>
+          <button class="accordeon__item" tabindex="3">
+            <span class="accordeon__icon"><i class="fa fa-users"></i></span>
+            <span class="accordeon__text">Професійні викладачі</span>
+            <span class="accordeon__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+          </button>
+          <button class="accordeon__item" tabindex="4">
+            <span class="accordeon__icon"><i class="fa fa-graduation-cap"></i></span>
+            <span class="accordeon__text">Диплом по завершенню навчання</span>
+            <span class="accordeon__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+          </button>
+          <button class="accordeon__item" tabindex="5">
+            <span class="accordeon__icon"><i class="fa fa-building"></i></span>
+            <span class="accordeon__text">Зручний формат навчання</span>
+            <span class="accordeon__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+          </button>
+          <button class="accordeon__item" tabindex="6">
+            <span class="accordeon__icon"><i class="fa fa-code"></i></span>
+            <span class="accordeon__text">Багато практики</span>
+            <span class="accordeon__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+          </button>
+          <button class="accordeon__item" tabindex="7">
+            <span class="accordeon__icon"><i class="fa fa-comments"></i></span>
+            <span class="accordeon__text">Cоціальні проекти</span>
+            <span class="accordeon__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+          </button>
+        </div>
+        <div class="phone">
+          <img class="phone__bg" src="https://tappyguide.com/wp-content/plugins/apdash-core/modules/widgets/images/iphone-mask.png" alt="iPhone 14" />
+          <div class="phone__screen" data-scrollbars>
+            <div class="chat"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="scrollspy curriculum" id="curriculum">
+      <h1 class="title">Навчальна програма</h1>
+      <h6 class="subtitle">
+        В залежності від <b>вікової категорії</b> нами розроблена унікальна програма розвитку та навчання учнів,
+        <br />
+        що враховує психолого-фізіологічні характеристики учнів певного віку
+      </h6>
+      <div class="wrapper">
+        <h4 class="title center">
+          <img src="./img/check.png" alt="" />
+          Виберіть вікову категорію учня:
+        </h4>
+        <div class="filter-controls">
+          <div class="filter-control">
+            <button class="button filled filter-button" data-filter=".filter-1">8-9 років</button>
+            <p><b>8 років</b><br />навчання</p>
+          </div>
+          <div class="filter-control">
+            <button class="button filled filter-button" data-filter=".filter-2">10-11 років</button>
+            <p><b>6 років</b><br />навчання</p>
+          </div>
+          <div class="filter-control">
+            <button class="button filled filter-button" data-filter=".filter-3">12-16 років</button>
+            <p><b>4 років</b><br />навчання</p>
+          </div>
+          <div class="filter-control">
+            <button class="button filled filter-button" data-filter=".filter-4">від 16 років</button>
+            <p>Індивідуально</p>
+          </div>
+        </div>
+        <div class="mix-container">
+          <div class="mix filter-1">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-1">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-1">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-1">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-1">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-1">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-1">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-1">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-2">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-2">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-2">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-2">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-2">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-2">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-3">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-3">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-3">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-3">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-4">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mix filter-4">
+            <div class="card">
+              <img src="./img/1 class.png" width="90" height="120" alt="" />
+              <ul class="disciplines">
+                <li class="disciplines-item">
+                  <h4 class="title bold">Основи комп’ютерної грамотності</h4>
+                  <p>
+                    Користувацька грамотність <br />
+                    Десятипальцевий друк
+                  </p>
+                </li>
+                <li class="disciplines-item">
+                  <h4 class="title bold">Пізнавальна інформатика: світ Google-Документів</h4>
+                  <p>
+                    Робота з папками та файлами, <br />
+                    пошук та збір інформації, презентації з <br />
+                    анімацією, мультфільми
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="scrollspy team" id="team">
+      <h1 class="title">Наш колектив</h1>
+      <div class="wrapper">
+        <div class="leader">
+          <a data-fslightbox href="./img/derector.png">
+            <img src="./img/derector.png" alt="Student" class="team-photo" />
+          </a>
+          <div class="team-info">
+            <h2 class="team-title">Гут Олеся Петрівна</h2>
+            <p>Директор та вчитель інформатики в школи з 2002 року</p>
+            <br />
+            <p>
+              Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее
+              стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.
+            </p>
+            <div class="team-skills">
+              <div class="skill">
+                <img class="skill-background" src="./img/skill-1.png" alt="" />
+                <div class="skill-title">8 років</div>
+                <div class="skill-description">Досвіду з учнями</div>
+              </div>
+              <div class="skill">
+                <img class="skill-background" src="./img/skill-2.png" alt="" />
+                <div class="skill-title">Навики</div>
+                <div class="skill-description">
+                  HTML + CSS + JS <br />
+                  Node JS + React
+                </div>
+              </div>
+              <div class="skill">
+                <img class="skill-background" src="./img/skill-3.png" alt="" />
+                <div class="skill-title">Досвід</div>
+                <div class="skill-description">20 років стажу вчителем</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper collective" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff">
+          <div class="swiper-wrapper">
+            <a data-fslightbox href="./img/teacher-1.png" class="swiper-slide">
+              <img src="./img/teacher-1.png" />
+            </a>
+            <a data-fslightbox href="./img/teacher-2.png" class="swiper-slide">
+              <img src="./img/teacher-2.png" />
+            </a>
+            <a data-fslightbox href="./img/teacher-3.png" class="swiper-slide">
+              <img src="./img/teacher-3.png" />
+            </a>
+            <a data-fslightbox href="./img/teacher-4.png" class="swiper-slide">
+              <img src="./img/teacher-4.png" />
+            </a>
+            <a data-fslightbox href="./img/teacher-1.png" class="swiper-slide">
+              <img src="./img/teacher-1.png" />
+            </a>
+            <a data-fslightbox href="./img/teacher-2.png" class="swiper-slide">
+              <img src="./img/teacher-2.png" />
+            </a>
+            <a data-fslightbox href="./img/teacher-3.png" class="swiper-slide">
+              <img src="./img/teacher-3.png" />
+            </a>
+            <a data-fslightbox href="./img/teacher-4.png" class="swiper-slide">
+              <img src="./img/teacher-4.png" />
+            </a>
+          </div>
+          <div class="swiper-button-next collective-button-next"></div>
+          <div class="swiper-button-prev collective-button-prev"></div>
+        </div>
+        <div class="swiper-scrollbar collective-scrollbar"></div>
+      </div>
+    </section>
+    <section class="scrollspy gallery" id="gallery">
+      <h1 class="title">Галерея школи</h1>
+      <div class="wrapper">
+        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+          <div class="swiper-wrapper">
+            <a data-fslightbox href="https://swiperjs.com/demos/images/nature-1.jpg" class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+            </a>
+            <a data-fslightbox href="https://swiperjs.com/demos/images/nature-2.jpg" class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+            </a>
+            <a data-fslightbox href="https://swiperjs.com/demos/images/nature-3.jpg" class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+            </a>
+            <a data-fslightbox href="https://swiperjs.com/demos/images/nature-4.jpg" class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+            </a>
+            <a data-fslightbox href="https://swiperjs.com/demos/images/nature-5.jpg" class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+            </a>
+            <a data-fslightbox href="https://swiperjs.com/demos/images/nature-6.jpg" class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+            </a>
+            <a data-fslightbox href="https://swiperjs.com/demos/images/nature-7.jpg" class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+            </a>
+            <a data-fslightbox href="https://swiperjs.com/demos/images/nature-8.jpg" class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+            </a>
+            <a data-fslightbox href="https://swiperjs.com/demos/images/nature-9.jpg" class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+            </a>
+            <a data-fslightbox href="https://swiperjs.com/demos/images/nature-10.jpg" class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+            </a>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+        <div thumbsSlider="" class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+            </div>
+            <div class="swiper-slide">
+              <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+            </div>
+          </div>
+        </div>
+        <div class="swiper-scrollbar gallery-scrollbar"></div>
+      </div>
+    </section>
+    <section class="scrollspy reviews" id="reviews">
+      <h1 class="title">Відгуки про школу</h1>
+      <div class="wrapper">
+        <div class="filter-controls">
+          <div class="filter-control">
+            <button class="button filled filter-button" data-filter="all">Від усіх</button>
+          </div>
+          <div class="filter-control">
+            <button class="button filled filter-button" data-filter=".parents">Відгуки від батьків</button>
+          </div>
+          <div class="filter-control">
+            <button class="button filled filter-button" data-filter=".student">Відгуки від учнів</button>
+          </div>
+          <div class="filter-control">
+            <button class="button filled filter-button" data-filter=".graduates">Відгуки від випускників</button>
+          </div>
+        </div>
+        <div class="swiper reviews-slider reviews-mix-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide mix parents">
+              <div class="card">
+                <div class="reviewer">
+                  <div class="reviewer-photo">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  </div>
+                  <div class="reviewer-info">
+                    <h3 class="reviewer-name">Іванова Ірина</h3>
+                    <p class="reviewer-position">Батько учня</p>
+                  </div>
+                  <div class="reviewer-rating">
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                  </div>
+                </div>
+                <p class="review">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide mix student">
+              <div class="card">
+                <div class="reviewer">
+                  <div class="reviewer-photo">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  </div>
+                  <div class="reviewer-info">
+                    <h3 class="reviewer-name">Іванова Ірина</h3>
+                    <p class="reviewer-position">Батько учня</p>
+                  </div>
+                  <div class="reviewer-rating">
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                  </div>
+                </div>
+                <p class="review">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide mix graduates">
+              <div class="card">
+                <div class="reviewer">
+                  <div class="reviewer-photo">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  </div>
+                  <div class="reviewer-info">
+                    <h3 class="reviewer-name">Іванова Ірина</h3>
+                    <p class="reviewer-position">Батько учня</p>
+                  </div>
+                  <div class="reviewer-rating">
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                  </div>
+                </div>
+                <p class="review">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide mix parents">
+              <div class="card">
+                <div class="reviewer">
+                  <div class="reviewer-photo">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  </div>
+                  <div class="reviewer-info">
+                    <h3 class="reviewer-name">Іванова Ірина</h3>
+                    <p class="reviewer-position">Батько учня</p>
+                  </div>
+                  <div class="reviewer-rating">
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                  </div>
+                </div>
+                <p class="review">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide mix student">
+              <div class="card">
+                <div class="reviewer">
+                  <div class="reviewer-photo">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  </div>
+                  <div class="reviewer-info">
+                    <h3 class="reviewer-name">Іванова Ірина</h3>
+                    <p class="reviewer-position">Батько учня</p>
+                  </div>
+                  <div class="reviewer-rating">
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                  </div>
+                </div>
+                <p class="review">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide mix student">
+              <div class="card">
+                <div class="reviewer">
+                  <div class="reviewer-photo">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  </div>
+                  <div class="reviewer-info">
+                    <h3 class="reviewer-name">Іванова Ірина</h3>
+                    <p class="reviewer-position">Батько учня</p>
+                  </div>
+                  <div class="reviewer-rating">
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                  </div>
+                </div>
+                <p class="review">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide mix graduates">
+              <div class="card">
+                <div class="reviewer">
+                  <div class="reviewer-photo">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  </div>
+                  <div class="reviewer-info">
+                    <h3 class="reviewer-name">Іванова Ірина</h3>
+                    <p class="reviewer-position">Батько учня</p>
+                  </div>
+                  <div class="reviewer-rating">
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                  </div>
+                </div>
+                <p class="review">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide mix graduates">
+              <div class="card">
+                <div class="reviewer">
+                  <div class="reviewer-photo">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  </div>
+                  <div class="reviewer-info">
+                    <h3 class="reviewer-name">Іванова Ірина</h3>
+                    <p class="reviewer-position">Батько учня</p>
+                  </div>
+                  <div class="reviewer-rating">
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                  </div>
+                </div>
+                <p class="review">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide mix parents">
+              <div class="card">
+                <div class="reviewer">
+                  <div class="reviewer-photo">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  </div>
+                  <div class="reviewer-info">
+                    <h3 class="reviewer-name">Іванова Ірина</h3>
+                    <p class="reviewer-position">Батько учня</p>
+                  </div>
+                  <div class="reviewer-rating">
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                  </div>
+                </div>
+                <p class="review">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide mix parents">
+              <div class="card">
+                <div class="reviewer">
+                  <div class="reviewer-photo">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                  </div>
+                  <div class="reviewer-info">
+                    <h3 class="reviewer-name">Іванова Ірина</h3>
+                    <p class="reviewer-position">Батько учня</p>
+                  </div>
+                  <div class="reviewer-rating">
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon filled"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                    <svg class="reviewer-rating-icon"><use xlink:href="#starlet"></use></svg>
+                  </div>
+                </div>
+                <p class="review">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="scrollspy contact" id="contact">
+      <div class="wrapper">
+        <a data-fslightbox href="./img/contact.png">
+          <img src="./img/contact.png" alt="Teacher" class="contact-photo" />
+        </a>
+        <!-- <img src="./img/contact.png" alt="" class="contact-photo" /> -->
+        <form class="contact-form">
+          <h2 class="contact-title">Заповніть форму на безкоштовний пробний урок</h2>
+          <p class="contact-info">
+            Оберіть навчальну програму <br />
+            відповідно до віку вашої дитини
+          </p>
+          <input type="text" placeholder="Введіть вашу фамілію та ім’я" required />
+          <input type="text" placeholder="Ваш e-mail" required />
+          <input type="text" placeholder="Ваш номер телефону" required />
+          <p class="contact-select">
+            Програми по віку:
+            <input type="radio" name="student-age" id="student-kid" checked />
+            <input type="radio" name="student-age" id="student-young" />
+            <input type="radio" name="student-age" id="student-teenager" />
+            <input type="radio" name="student-age" id="student-adoult" />
+            <label for="student-kid">8-9</label>
+            <label for="student-young">10-11</label>
+            <label for="student-teenager">12-16</label>
+            <label for="student-adoult">від 12</label>
+          </p>
+          <input type="text" placeholder="Введіть фамілію та ім’я учня" required />
+          <input type="text" placeholder="Оберіть рівень знань вашої дитини" required />
+          <div class="contact-rules">
+            <input type="checkbox" id="contact-personal-agree" />
+            <label for="contact-personal-agree">Я погоджуюсь з умовами обробки персональних данних</label>
+          </div>
+          <button type="submit" class="contact-button button filled filter-button mixitup-control-active">Надіслати</button>
+        </form>
+      </div>
+    </section>
+    <section class="scrollspy map" id="map">
+      <h2 class="title">Контакти</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2621.320544725535!2d24.704625716209346!3d48.928336179294426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4730c10e037eb311%3A0xf2548cdfd91d3e55!2sPivnichnyi%20Blvd%2C%205%D0%91%2C%20Ivano-Frankivs&#39;k%2C%20Ivano-Frankivs&#39;ka%20oblast%2C%2076000!5e0!3m2!1sen!2sua!4v1679166179708!5m2!1sen!2sua"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </section>
+    <footer class="scrollspy footer" id="footer">
+      <div class="wrapper">
+        <div class="column">
+          <h3 class="highlighted">
+            Наші адреси
+            <svg class="icon">
+              <use xlink:href="#arrow-right-gradient"></use>
+            </svg>
+          </h3>
+          <div class="social">
+            <p class="social-title">Ми в соц.мережах</p>
+            <ul class="social-icons">
+              <li class="social-item">
+                <a href="#" class="social-link"><img src="./img/instagram.png" alt="" class="social-icon" /></a>
+              </li>
+              <li class="social-item">
+                <a href="#" class="social-link"><img src="./img/facebook.png" alt="" class="social-icon" /></a>
+              </li>
+              <li class="social-item">
+                <a href="#" class="social-link"><img src="./img/vk.png" alt="" class="social-icon" /></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="title">
+            м. Івано-Франківськ, <br />
+            вул. Північний бульвар 5б
+          </h2>
+          <ul class="phones">
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">(099) 23 11 519</a>
+            </li>
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">(098) 43 28 540</a>
+            </li>
+          </ul>
+        </div>
+        <div class="column">
+          <h2 class="title">
+            м. Кривий Ріг, <br />
+            вул. Співдружності 92а
+          </h2>
+          <ul class="phones">
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">(068) 20 60 734</a>
+            </li>
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">@kompschool</a>
+            </li>
+          </ul>
+        </div>
+        <div class="column">
+          <h2 class="title">
+            м. Запоріжжя, <br />
+            вул. Шкільна 56
+          </h2>
+          <ul class="phones">
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">(067) 54 45 402</a>
+            </li>
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">@kompschool_zp</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <div class="wrapper">
+          <img src="./img/logo.png" alt="" class="nav-logo" />
+          <ul class="nav-list list">
+            <li class="list-item"><a href="#about" class="list-link active">Головна</a></li>
+            <li class="list-item"><a href="#advantages" class="list-link">Наші переваги</a></li>
+            <li class="list-item"><a href="#curriculum" class="list-link">Навчальна програма</a></li>
+            <li class="list-item"><a href="#team" class="list-link">Наш колектив</a></li>
+            <li class="list-item"><a href="#contact" class="list-link">Галерея</a></li>
+            <li class="list-item"><a href="#contact" class="list-link">Відгуки</a></li>
+            <li class="list-item"><a href="#contact" class="list-link">Контакти</a></li>
+          </ul>
+          <a href="#" class="policy">Политика конфиденциальности</a>
+        </div>
+      </nav>
+    </footer>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/fslightbox.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/scroll-spy.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/iPhone.js"></script>
+  </body>
+</html>

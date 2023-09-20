@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div style="position: absolute; visibility: hidden; width: 0; height: 0">
+      <svg>
+        <symbol id="starlet" width="10" height="10" viewBox="0 0 10 10">
+          <path
+            d="M9.89374 4.20643L7.70245 6.40326L8.21993 9.50602C8.24244 9.64169 8.18827 9.77881 8.07992 9.85985C8.0187 9.9058 7.94588 9.92896 7.87306 9.92896C7.81713 9.92896 7.76084 9.91521 7.70948 9.88735L5 8.42244L2.29087 9.88699C2.17267 9.95139 2.02879 9.94089 1.92044 9.85949C1.81208 9.77845 1.75791 9.64133 1.78042 9.50565L2.29791 6.40289L0.106257 4.20643C0.0105704 4.1102 -0.0242568 3.9662 0.0172544 3.83559C0.0587655 3.70498 0.168876 3.60911 0.3015 3.58921L3.33006 3.13697L4.68444 0.314236C4.803 0.0671296 5.197 0.0671296 5.31556 0.314236L6.66994 3.13697L9.6985 3.58921C9.83112 3.60911 9.94123 3.70462 9.98275 3.83559C10.0243 3.96656 9.98943 4.10983 9.89374 4.20643Z"
+            fill="#FFB800"
+          />
+        </symbol>
+        <symbol id="arrow-right" width="20" height="12" viewBox="0 0 20 12">
+          <path
+            d="M14.1248 1.18774C14.0603 1.25165 14.0092 1.32769 13.9743 1.41146C13.9394 1.49524 13.9214 1.5851 13.9214 1.67586C13.9214 1.76662 13.9394 1.85648 13.9743 1.94026C14.0092 2.02404 14.0603 2.10007 14.1248 2.16399L17.2873 5.32649H1.10352C0.921179 5.32649 0.746311 5.39892 0.61738 5.52785C0.488448 5.65678 0.416016 5.83165 0.416016 6.01399C0.416016 6.19632 0.488448 6.37119 0.61738 6.50012C0.746311 6.62905 0.921179 6.70149 1.10352 6.70149H17.2735L14.1248 9.84336C13.9967 9.97217 13.9248 10.1464 13.9248 10.328C13.9248 10.5097 13.9967 10.6839 14.1248 10.8127C14.2536 10.9408 14.4278 11.0127 14.6095 11.0127C14.7911 11.0127 14.9653 10.9408 15.0941 10.8127L19.4666 6.44024C19.5255 6.38377 19.5723 6.31599 19.6043 6.24097C19.6363 6.16595 19.6528 6.08523 19.6528 6.00367C19.6528 5.92212 19.6363 5.8414 19.6043 5.76638C19.5723 5.69136 19.5255 5.62358 19.4666 5.56711L15.101 1.18774C15.0371 1.1233 14.9611 1.07215 14.8773 1.03725C14.7935 1.00235 14.7036 0.984375 14.6129 0.984375C14.5221 0.984375 14.4323 1.00235 14.3485 1.03725C14.2647 1.07215 14.1887 1.1233 14.1248 1.18774Z"
+            fill="black"
+          />
+        </symbol>
+        <symbol id="arrow-right-gradient" width="23" height="13" viewBox="0 0 23 13">
+          <path
+            d="M16.1875 1.03187C16.1143 1.1045 16.0562 1.19091 16.0165 1.28611C15.9768 1.38131 15.9564 1.48343 15.9564 1.58656C15.9564 1.6897 15.9768 1.79181 16.0165 1.88701C16.0562 1.98221 16.1143 2.06862 16.1875 2.14125L19.7812 5.735H1.39062C1.18342 5.735 0.984711 5.81731 0.838198 5.96382C0.691685 6.11033 0.609375 6.30905 0.609375 6.51625C0.609375 6.72345 0.691685 6.92216 0.838198 7.06868C0.984711 7.21519 1.18342 7.2975 1.39062 7.2975H19.7656L16.1875 10.8678C16.042 11.0142 15.9603 11.2122 15.9603 11.4186C15.9603 11.625 16.042 11.823 16.1875 11.9694C16.3339 12.1149 16.5319 12.1966 16.7383 12.1966C16.9447 12.1966 17.1427 12.1149 17.2891 11.9694L22.2578 7.00062C22.3247 6.93646 22.3779 6.85944 22.4143 6.77418C22.4506 6.68893 22.4693 6.59721 22.4693 6.50453C22.4693 6.41185 22.4506 6.32013 22.4143 6.23488C22.3779 6.14962 22.3247 6.0726 22.2578 6.00844L17.2969 1.03187C17.2242 0.958648 17.1378 0.900528 17.0426 0.860865C16.9474 0.821202 16.8453 0.800781 16.7422 0.800781C16.6391 0.800781 16.5369 0.821202 16.4417 0.860865C16.3465 0.900528 16.2601 0.958648 16.1875 1.03187Z"
+            fill="url(#paint0_linear_581_2347)"
+          />
+          <defs>
+            <linearGradient id="paint0_linear_581_2347" x1="-10.4022" y1="6.49867" x2="22.4693" y2="6.49867" gradientUnits="userSpaceOnUse">
+              <stop offset="0.0447915" stop-color="#7FFFBC" />
+              <stop offset="0.940625" stop-color="#62D9FF" />
+            </linearGradient>
+          </defs>
+        </symbol>
+        <symbol id="triangle-bottom" width="7" height="3" viewBox="0 0 7 3">
+          <path d="M3.5 3L0.468911 0L6.53109 0L3.5 3Z" fill="black" />
+        </symbol>
+        <symbol id="phone-gradient" width="15" height="15" viewBox="0 0 15 15">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M7.20734 7.79524C9.70052 10.2877 10.2661 7.4042 11.8535 8.99051C13.3839 10.5205 14.2635 10.827 12.3245 12.7655C12.0816 12.9606 10.5385 15.3089 5.11538 9.88729C-0.308424 4.465 2.03849 2.92028 2.23373 2.67747C4.17742 0.733654 4.47866 1.61836 6.00906 3.14833C7.59648 4.73531 4.71416 5.30276 7.20734 7.79524Z"
+            fill="url(#paint0_linear_581_2304)"
+          />
+          <defs>
+            <linearGradient id="paint0_linear_581_2304" x1="-4.41931" y1="7.5" x2="13.4375" y2="7.5" gradientUnits="userSpaceOnUse">
+              <stop offset="0.0447915" stop-color="#7FFFBC" />
+              <stop offset="0.940625" stop-color="#62D9FF" />
+            </linearGradient>
+          </defs>
+        </symbol>
+        <symbol id="star" width="30" height="30" viewBox="0 0 30 30">
+          <path
+            d="M15 30L10.6066 25.6066H4.39336V19.3934L0 15L4.39336 10.6066V4.39336H10.6066L15 0L19.3934 4.39336H25.6066V10.6066L30 15L25.6066 19.3934V25.6066H19.3934L15 30Z"
+            fill="#EDC472"
+          />
+        </symbol>
+      </svg>
+    </div>
+    <nav class="nav">
+      <div class="wrapper">
+        <img src="./img/logo.png" alt="" class="nav-logo" />
+        <ul class="nav-list list">
+          <li class="list-item"><a href="./index.html" class="list-link">Головна</a></li>
+          <li class="list-item"><a href="#story" class="list-link">Історії успіху</a></li>
+          <li class="list-item"><a href="#students" class="list-link">Наші випускники</a></li>
+          <li class="list-item"><a href="#works" class="list-link">Роботи учнів</a></li>
+          <li class="list-item"><a href="#news" class="list-link">Наші новини</a></li>
+          <li class="list-item"><a href="#contact" class="list-link">Контакти</a></li>
+          <li class="list-item">
+            <a href="#twenty-years" class="list-link active custom">
+              Нам
+              <span class="star">
+                <svg class="star-icon">
+                  <use xlink:href="#star"></use>
+                </svg>
+                 20 
+              </span>
+              років
+            </a>
+          </li>
+          <li class="list-item"><a href="#footer" class="list-link">+38 066 22 19 699</a></li>
+        </ul>
+        <div class="language">
+          <div class="language-select">
+            <img src="./img/flag.png" alt="" class="language-flag" />
+            <p class="language-country_short">UA</p>
+            <svg class="language-country_icon">
+              <use xlink:href="#triangle-bottom"></use>
+            </svg>
+          </div>
+          <div class="language-options">
+            <div class="language-option">
+              <img src="./img/flag.png" alt="" class="language-flag" />
+              <p class="language-country_short">UA</p>
+            </div>
+            <div class="language-option">
+              <img src="./img/flag.png" alt="" class="language-flag" />
+              <p class="language-country_short">UA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="scrollspy twenty-years" id="twenty-years">
+      <h1 class="title">Нам 20 років</h1>
+      <div class="wrapper">
+        <div class="slider-wrapper">
+          <div class="swiper twenty-years-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./img/video-1.png" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/video-1.png" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/video-1.png" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/video-1.png" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/video-1.png" alt="" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/video-1.png" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next twenty-years-button-next"></div>
+          <div class="swiper-button-prev twenty-years-button-prev"></div>
+          <div class="swiper-scrollbar twenty-years-scrollbar"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scrollspy story" id="story">
+      <h2 class="title">
+        Історії успіху та відгуки від <br />
+        випускників школи
+      </h2>
+      <div class="wrapper">
+        <div class="slider-wrapper">
+          <div class="swiper story-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./img/video-2.png" alt="" class="swiper-video" />
+              </div>
+              <div class="swiper-slide swiper-respond">
+                <div class="swiper-person">
+                  <img src="./img/avatar.png" alt="" class="swiper-person-avatar" />
+                  <div class="swiper-person-info">
+                    <h3 class="swiper-person-name">Guy Hawkins</h3>
+                    <p class="swiper-person-role">Учень</p>
+                  </div>
+                </div>
+                <div class="swiper-rating">
+                  <svg class="star">
+                    <use xlink:href="#starlet"></use>
+                  </svg>
+                  <svg class="star">
+                    <use xlink:href="#starlet"></use>
+                  </svg>
+                  <svg class="star">
+                    <use xlink:href="#starlet"></use>
+                  </svg>
+                  <svg class="star">
+                    <use xlink:href="#starlet"></use>
+                  </svg>
+                  <svg class="star">
+                    <use xlink:href="#starlet"></use>
+                  </svg>
+                </div>
+                <p class="swiper-feedback">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/video-2.png" alt="" class="swiper-video" />
+              </div>
+              <div class="swiper-slide swiper-respond">
+                <div class="swiper-person">
+                  <img src="./img/avatar.png" alt="" class="swiper-person-avatar" />
+                  <div class="swiper-person-info">
+                    <h3 class="swiper-person-name">Guy Hawkins</h3>
+                    <p class="swiper-person-role">Учень</p>
+                  </div>
+                </div>
+                <div class="swiper-rating">
+                  <svg class="star">
+                    <use xlink:href="#starlet"></use>
+                  </svg>
+                  <svg class="star">
+                    <use xlink:href="#starlet"></use>
+                  </svg>
+                  <svg class="star">
+                    <use xlink:href="#starlet"></use>
+                  </svg>
+                  <svg class="star">
+                    <use xlink:href="#starlet"></use>
+                  </svg>
+                  <svg class="star">
+                    <use xlink:href="#starlet"></use>
+                  </svg>
+                </div>
+                <p class="swiper-feedback">
+                  Безусловно, высокое качество позиционных исследований требует от нас анализа новых предложений. Равным образом, постоянное информационно-пропагандистское.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next story-button-next"></div>
+          <div class="swiper-button-prev story-button-prev"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scrollspy students" id="students">
+      <h2 class="title">Наші випускники</h2>
+      <div class="wrapper">
+        <div class="swiper students-slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="swiper-student green">
+                <img class="swiper-image" src="./img/student-1.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student blue">
+                <img class="swiper-image" src="./img/student-2.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student teal">
+                <img class="swiper-image" src="./img/student-3.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student teal">
+                <img class="swiper-image" src="./img/student-4.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student blue">
+                <img class="swiper-image" src="./img/student-5.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student green">
+                <img class="swiper-image" src="./img/student-6.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-student green">
+                <img class="swiper-image" src="./img/student-7.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student blue">
+                <img class="swiper-image" src="./img/student-8.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student teal">
+                <img class="swiper-image" src="./img/student-9.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student teal">
+                <img class="swiper-image" src="./img/student-10.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student blue">
+                <img class="swiper-image" src="./img/student-11.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student green">
+                <img class="swiper-image" src="./img/student-12.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-student green">
+                <img class="swiper-image" src="./img/student-13.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student blue">
+                <img class="swiper-image" src="./img/student-14.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student teal">
+                <img class="swiper-image" src="./img/student-15.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student teal">
+                <img class="swiper-image" src="./img/student-16.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student blue">
+                <img class="swiper-image" src="./img/student-17.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student green">
+                <img class="swiper-image" src="./img/student-18.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-student green">
+                <img class="swiper-image" src="./img/student-19.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student blue">
+                <img class="swiper-image" src="./img/student-20.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student teal">
+                <img class="swiper-image" src="./img/student-21.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student teal">
+                <img class="swiper-image" src="./img/student-22.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student blue">
+                <img class="swiper-image" src="./img/student-23.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student green">
+                <img class="swiper-image" src="./img/student-24.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-student green">
+                <img class="swiper-image" src="./img/student-25.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student blue">
+                <img class="swiper-image" src="./img/student-26.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student teal">
+                <img class="swiper-image" src="./img/student-27.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student teal">
+                <img class="swiper-image" src="./img/student-28.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student blue">
+                <img class="swiper-image" src="./img/student-29.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+              <div class="swiper-student green">
+                <img class="swiper-image" src="./img/student-30.png" alt="" />
+                <h3 class="swiper-title">Боднар Маргарита</h3>
+                <p class="swiper-subtitle">випускниця 2016</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-scrollbar students-scrollbar"></div>
+        </div>
+      </div>
+    </section>
+    <section class="scrollspy works" id="works">
+      <h2 class="title">Роботи учнів</h2>
+      <div class="wrapper">
+        <div class="work">
+          <p class="work-group">6 клас</p>
+          <h3 class="work-name">Leslie Alexander</h3>
+          <img src="./img/portfolio-1.png" alt="" class="work-site" />
+        </div>
+        <div class="work">
+          <p class="work-group">6 клас</p>
+          <h3 class="work-name">Leslie Alexander</h3>
+          <img src="./img/portfolio-2.png" alt="" class="work-site" />
+        </div>
+        <div class="work">
+          <p class="work-group">6 клас</p>
+          <h3 class="work-name">Leslie Alexander</h3>
+          <img src="./img/portfolio-3.png" alt="" class="work-site" />
+        </div>
+        <div class="work">
+          <p class="work-group">6 клас</p>
+          <h3 class="work-name">Leslie Alexander</h3>
+          <img src="./img/portfolio-4.png" alt="" class="work-site" />
+        </div>
+      </div>
+      <a href="#" class="works-button"
+        >Показати більше
+        <svg class="icon">
+          <use xlink:href="#arrow-right"></use>
+        </svg>
+      </a>
+    </section>
+    <section class="scrollspy news" id="news">
+      <h2 class="title">Наші новини</h2>
+      <div class="wrapper">
+        <div class="news-item">
+          <img src="./img/news-1.png" alt="" class="news-photo" />
+          <p class="news-info">Сегодня нам и нашим детям грозит опасность не менее страшная, чем многие вирусы, и имя этой опасности — цифровая зависимость.</p>
+        </div>
+        <div class="news-item">
+          <img src="./img/news-2.png" alt="" class="news-photo" />
+          <p class="news-info">Сегодня нам и нашим детям грозит опасность не менее страшная, чем многие вирусы, и имя этой опасности — цифровая зависимость.</p>
+        </div>
+        <div class="news-item">
+          <img src="./img/news-3.png" alt="" class="news-photo" />
+          <p class="news-info">Сегодня нам и нашим детям грозит опасность не менее страшная, чем многие вирусы, и имя этой опасности — цифровая зависимость.</p>
+        </div>
+        <div class="news-item">
+          <img src="./img/news-4.png" alt="" class="news-photo" />
+          <p class="news-info">Сегодня нам и нашим детям грозит опасность не менее страшная, чем многие вирусы, и имя этой опасности — цифровая зависимость.</p>
+        </div>
+        <div class="news-item">
+          <img src="./img/news-5.png" alt="" class="news-photo" />
+          <p class="news-info">Сегодня нам и нашим детям грозит опасность не менее страшная, чем многие вирусы, и имя этой опасности — цифровая зависимость.</p>
+        </div>
+        <div class="news-item">
+          <img src="./img/news-6.png" alt="" class="news-photo" />
+          <p class="news-info">Сегодня нам и нашим детям грозит опасность не менее страшная, чем многие вирусы, и имя этой опасности — цифровая зависимость.</p>
+        </div>
+      </div>
+    </section>
+    <section class="scrollspy contact" id="contact">
+      <div class="wrapper">
+        <img src="./img/contact.png" alt="" class="contact-photo" />
+        <form class="contact-form">
+          <h2 class="contact-title">Заповніть форму на безкоштовний пробний урок</h2>
+          <p class="contact-info">
+            Оберіть навчальну програму <br />
+            відповідно до віку вашої дитини
+          </p>
+          <input type="text" placeholder="Введіть вашу фамілію та ім’я" required />
+          <input type="text" placeholder="Ваш e-mail" required />
+          <input type="text" placeholder="Ваш номер телефону" required />
+          <p class="contact-select">
+            Програми по віку:
+            <input type="radio" name="student-age" id="student-kid" checked />
+            <input type="radio" name="student-age" id="student-young" />
+            <input type="radio" name="student-age" id="student-teenager" />
+            <input type="radio" name="student-age" id="student-adoult" />
+            <label for="student-kid">8-9</label>
+            <label for="student-young">10-11</label>
+            <label for="student-teenager">12-16</label>
+            <label for="student-adoult">від 12</label>
+          </p>
+          <input type="text" placeholder="Введіть фамілію та ім’я учня" required />
+          <input type="text" placeholder="Оберіть рівень знань вашої дитини" required />
+          <div class="contact-rules">
+            <input type="checkbox" id="contact-personal-agree" />
+            <label for="contact-personal-agree">Я погоджуюсь з умовами обробки персональних данних</label>
+          </div>
+          <button type="submit" class="contact-button button filled filter-button mixitup-control-active">Надіслати</button>
+        </form>
+      </div>
+    </section>
+    <section class="scrollspy map" id="map">
+      <h2 class="title">Контакти</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2621.320544725535!2d24.704625716209346!3d48.928336179294426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4730c10e037eb311%3A0xf2548cdfd91d3e55!2sPivnichnyi%20Blvd%2C%205%D0%91%2C%20Ivano-Frankivs&#39;k%2C%20Ivano-Frankivs&#39;ka%20oblast%2C%2076000!5e0!3m2!1sen!2sua!4v1679166179708!5m2!1sen!2sua"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </section>
+    <footer class="footer" id="footer">
+      <div class="wrapper">
+        <div class="column">
+          <h3 class="highlighted">
+            Наші адреси
+            <svg class="icon">
+              <use xlink:href="#arrow-right-gradient"></use>
+            </svg>
+          </h3>
+          <div class="social">
+            <p class="social-title">Ми в соц.мережах</p>
+            <ul class="social-icons">
+              <li class="social-item">
+                <a href="#" class="social-link"><img src="./img/instagram.png" alt="" class="social-icon" /></a>
+              </li>
+              <li class="social-item">
+                <a href="#" class="social-link"><img src="./img/facebook.png" alt="" class="social-icon" /></a>
+              </li>
+              <li class="social-item">
+                <a href="#" class="social-link"><img src="./img/vk.png" alt="" class="social-icon" /></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="title">
+            м. Івано-Франківськ, <br />
+            вул. Північний бульвар 5б
+          </h2>
+          <ul class="phones">
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">(099) 23 11 519</a>
+            </li>
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">(098) 43 28 540</a>
+            </li>
+          </ul>
+        </div>
+        <div class="column">
+          <h2 class="title">
+            м. Кривий Ріг, <br />
+            вул. Співдружності 92а
+          </h2>
+          <ul class="phones">
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">(068) 20 60 734</a>
+            </li>
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">@kompschool</a>
+            </li>
+          </ul>
+        </div>
+        <div class="column">
+          <h2 class="title">
+            м. Запоріжжя, <br />
+            вул. Шкільна 56
+          </h2>
+          <ul class="phones">
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">(067) 54 45 402</a>
+            </li>
+            <li class="phone-item">
+              <svg class="icon">
+                <use xlink:href="#phone-gradient"></use>
+              </svg>
+              <a href="" class="phone-link">@kompschool_zp</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <div class="wrapper">
+          <img src="./img/logo.png" alt="" class="nav-logo" />
+          <ul class="nav-list list">
+            <li class="list-item"><a href="./index.html" class="list-link">Головна</a></li>
+            <li class="list-item"><a href="#story" class="list-link">Історії успіху</a></li>
+            <li class="list-item"><a href="#students" class="list-link">Наші випускники</a></li>
+            <li class="list-item"><a href="#works" class="list-link">Роботи учнів</a></li>
+            <li class="list-item"><a href="#news" class="list-link">Наші новини</a></li>
+            <li class="list-item"><a href="#contact" class="list-link">Контакти</a></li>
+            <li class="list-item"><a href="#twenty-years" class="list-link">Нам 20 років</a></li>
+          </ul>
+          <a href="#" class="policy">Политика конфиденциальности</a>
+        </div>
+      </nav>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="./js/scroll-spy.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
